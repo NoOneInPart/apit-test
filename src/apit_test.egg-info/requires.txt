@@ -1,0 +1,7 @@
+mutagen
+rich>=12.6.0
+
+[dev]
+pre-commit
+tox
+pytest

@@ -17,6 +17,7 @@ VALID_KIND_VALUES_FOR_SONG: Final = "song"
 class StoreKey(StrEnum):
     # song values
     ARTIST = "artistName"
+    ARTIST_ID = "artistId"
     TITLE = "trackCensoredName"  # alternatively: 'trackName' without stars '*'
     ALBUM_NAME = "collectionCensoredName"  # alternatively: 'collectionName' without stars '*'; in ALBUM: both fields are present as well
     GENRE = "primaryGenreName"

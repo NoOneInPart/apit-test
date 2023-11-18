@@ -15,6 +15,7 @@ class Song:
     disc_total: int
     title: str
     artist: str
+    artist_id: str # python gets mad at me if I set this to int
     release_date: str
     genre: str
     album_name: str

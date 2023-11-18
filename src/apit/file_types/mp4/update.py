@@ -54,6 +54,7 @@ def _modify_mp4_file(
     mp4_file: mutagen.mp4.MP4, song: Song, artwork: Artwork | None = None
 ) -> mutagen.mp4.MP4:
     mp4_file[Mp4Mapping.ARTIST.value] = song.artist
+    mp4_file[Mp4Mapping.ARTIST_ID.value] = [song.artist_id]
     mp4_file[Mp4Mapping.TITLE.value] = song.title
     mp4_file[Mp4Mapping.ALBUM_NAME.value] = song.album_name
     mp4_file[Mp4Mapping.GENRE.value] = song.genre
@@ -68,6 +69,7 @@ def _modify_mp4_file(
     mp4_file[Mp4Mapping.COPYRIGHT.value] = song.copyright
     mp4_file[Mp4Mapping.COMPILATION.value] = song.compilation
     mp4_file[Mp4Mapping.CONTENT_ID.value] = [song.content_id]
+    mp4_file[Mp4Mapping.PLAYLIST_ID.value] = [song.collection_id]
 
     if artwork:
         # TODO first, remove all artwork

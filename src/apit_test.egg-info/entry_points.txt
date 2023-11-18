@@ -1,0 +1,10 @@
+[apit.commands]
+list = apit.commands.list:ListCommand
+tag = apit.commands.tag:TagCommand
+
+[apit.file_types]
+m4a = apit.file_types.mp4:Mp4File
+mp3 = apit.file_types.mp3:Mp3File
+
+[console_scripts]
+apit = apit.cli:cli
