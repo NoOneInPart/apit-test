@@ -3,9 +3,10 @@
 **USE THIS FORK AT YOUR OWN RISK**
 
 apit allows batch tagging .mp3 and .m4a (AAC and ALAC) file metadata tags using data from Apple Music/iTunes Store.
-this contains dirty edits that i made to experiment (adding artistid and playlistid tags)
+this fork adds artistid and playlistid tags when tagging files in m4a containers, which enables Motion Artwork for supported albums when synced to iOS amongst other stuff.
 
-i mean, it works for me™️
+this is apparently not supposed to work [according to an issue in the parent fork](https://github.com/wschott/apit/issues/2) but i mean, it Works For Me?™️ tested on Windows 11 24H2 with Python 3.13.5 from the Windows Store (yes i do like making things needlessly harder)
+maybe i'll learn how to write pull requests one day
 
 
 # Installation
