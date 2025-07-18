@@ -12,7 +12,7 @@ class Mp3Tag(TaggedValue):
     def _get_readable_name(self, tag_id: TagId) -> ReadableTagName | None:
         try:
             mapped_tag_id = Mp3Mapping(tag_id)
-            return MP3_MAPPING_TO_READABLE_TAG_NAME.get(mapped_tag_id, None)
+            return MP3_MAPPING_TO_READABLE_TAG_NAME.get(mapped_tag_id)
         except ValueError:
             return None
 
@@ -20,16 +20,17 @@ class Mp3Tag(TaggedValue):
         if isinstance(self._unprocessed_value, mutagen.id3.USLT):  # MP3_MAPPING.LYRICS
             lyrics = self._unprocessed_value
             if verbose:
-                return lyrics.text.replace("\r", os.linesep)  # type: ignore
+                return lyrics.text.replace("\r", os.linesep)  # type: ignore[attr-defined]
             return "<present>"
         elif isinstance(
             self._unprocessed_value, mutagen.id3.APIC
         ):  # MP3_MAPPING.ARTWORK
             return "<present>"
         elif self.tag_id == Mp3Mapping.GAPLESS or isinstance(
-            self._unprocessed_value, mutagen.id3.TCMP  # MP3_MAPPING.COMPILATION
+            self._unprocessed_value,
+            mutagen.id3.TCMP,  # MP3_MAPPING.COMPILATION
         ):
-            return "<yes>" if self._unprocessed_value.text[0] == "1" else "<no>"  # type: ignore
+            return "<yes>" if self._unprocessed_value.text[0] == "1" else "<no>"
         else:
             return str(self._unprocessed_value)
 
