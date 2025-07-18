@@ -15,7 +15,8 @@ REGEX_STORE_URL: Final = re.compile(
     r"https?://[^/]*"
     + r"/(?P<country_code>[a-z]{2})"
     + r"/[^/]+/[^/]+"
-    + r"/(id)?(?P<id>\d+)",
+    + r"/(id)?(?P<id>\d+)"
+    + r"(?:\?l=(?P<lang>[\w-]+))?", # new regex line from the talking computer
     re.IGNORECASE,
 )
 
@@ -28,7 +29,11 @@ def generate_lookup_url(source: str) -> str:
 
     country_code = match.groupdict()["country_code"]
     album_id = match.groupdict()["id"]
-    return f"https://itunes.apple.com/lookup?entity=song&country={country_code}&id={album_id}"
+    lang = match.groupdict()["lang"]
+    lookup_url =  f"https://itunes.apple.com/lookup?entity=song&country={country_code}&id={album_id}"
+    if lang:
+        lookup_url += f"&l={lang}"
+    return lookup_url
 
 
 def download_metadata(url: str) -> str:
